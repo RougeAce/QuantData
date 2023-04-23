@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def current_share_price(Ticker):  # Gets the current share price from the market
     output = Ticker.info['marketCap'] / Ticker.info['sharesOutstanding']
-    return output
+    return round(output, 2)
 
 
 def CIP(Ticker, Ticker2):  # Gets the shareprice over a certain period of time. Comapres two
@@ -25,13 +25,16 @@ def CIP(Ticker, Ticker2):  # Gets the shareprice over a certain period of time. 
         pass
 
 
-def get_ticker():
-    ticker = input("Enter a ticker symbol: ")
-    return ticker.upper()
+def get_ticker(symbol = None):
+    if symbol == None:
+        symbol = input("Enter a ticker symbol: ")
+    else:
+        symbol = symbol
+
+    ticker = yf.Ticker(symbol.upper())
+    return ticker
 
 
-# get all stock info
-print(CIP(get_ticker(), get_ticker()))
 
 
 

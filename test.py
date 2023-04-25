@@ -1,8 +1,4 @@
-import yfinance as yf
-
-AAPL = yf.Ticker("AAPL")
+import pandas as pd
 
 
-
-print(AAPL.info)
 

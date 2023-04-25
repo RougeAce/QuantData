@@ -1,4 +1,8 @@
 import yfinance as yf
 
-ticker = "AAPL"
-print(yf.ticker['name'])
+AAPL = yf.Ticker("AAPL")
+
+
+
+print(AAPL.info)
+

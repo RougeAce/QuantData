@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 
 def current_share_price(Ticker):  # Gets the current share price from the market
-    output = Ticker.info['marketCap'] / Ticker.info['sharesOutstanding']
-    return round(output, 2)
+    output = Ticker.info['currentPrice']
+    return round(output, 4)
 
 
 def CIP(Ticker, Ticker2):  # Gets the shareprice over a certain period of time. Comapres two

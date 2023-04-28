@@ -1,13 +1,9 @@
 import yfinance as yf
-from BackEnd import main
-from datetime import datetime
 import pandas as pd
 import numpy as np
+import main
+import csv
 
-
-
-
-# Gets the cloest options to the stirkes
 
 def get_options(ticker,exp_date, Seperate = False):
     options = ticker.option_chain(exp_date)
@@ -19,6 +15,8 @@ def get_options(ticker,exp_date, Seperate = False):
         return options
 
 def get_closet_strike(target_call, target_put, ticker, exp_date):
+    if isinstance(ticker, yf.Ticker) == False:
+        ticker = main.get_ticker(ticker)
 
     calls, puts = get_options(ticker, exp_date, True)
 
@@ -86,80 +84,7 @@ def iron_condor(ticker, HStrike, LStrike, Max_Loss, exp):
     # Print closest call and put option contracts
     return  optionHigh, optionLow, closest_call, closest_put
 
-
-
-
-
-def calculate_options(*options):
-    total_premiums = 0
-    max_profit = 0
-    max_loss = 0
-    for option in options:
-        expiration_date_str = option[6:12]
-        expiration_date = datetime.strptime(convert_date_options(expiration_date_str), '%Y-%m-%d').date()
-        option_data = yf.Ticker(option).option_chain(expiration_date.strftime('%Y-%m-%d'))
-        option_calls = option_data.calls
-        option_puts = option_data.puts
-        target_strike = option_data.calls['strike'].mean()
-        closest_call = option_calls.iloc[(option_calls['strike'] - target_strike).abs().argmin()]
-        closest_put = option_puts.iloc[(option_puts['strike'] - target_strike).abs().argmin()]
-        stock_price = yf.Ticker(option).history(period='1d')['Close'][0]
-        call_profit = (stock_price - closest_call['strike']) * closest_call['lastPrice'] * 100
-        put_profit = (closest_put['strike'] - stock_price) * closest_put['lastPrice'] * 100
-        total_option_premium = closest_call['lastPrice'] + closest_put['lastPrice']
-        total_premiums += total_option_premium
-        total_option_profit = call_profit if closest_call['strike'] > stock_price else put_profit
-        max_profit = float('inf') if closest_call['lastPrice'] == 0 else max(max_profit, total_option_profit)
-        max_loss = closest_call['lastPrice'] * -100 if closest_call['lastPrice'] != 0 else closest_put['lastPrice'] * -100
-        max_loss = min(max_loss, total_option_profit)
-    return (max_profit, max_loss, total_premiums)
-
-def convert_date_options(option): #230505
-    #C = option['contractSymbol']
-    C = option
-
-    Y = str(C[4])
-    R = str(C[5])
-    M = str(C[6])
-    M2 = str(C[7])
-    D1 = str(C[8])
-    D2 = str(C[9])
-
-    YYYYMMDD = ("20" + Y + R + "-" + M + M2 + "-" + D1 + D2)
-    return YYYYMMDD
-
-SC, SP, BC, BP = iron_condor(main.get_ticker("AAPL"), 170, 166, 1000, "2023-05-05")
-
-
-
-
-
-print(calculate_options(SC['contractSymbol'], SP['contractSymbol'], BC['contractSymbol'], BP['contractSymbol']))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SC, SP, BC, BP = iron_condor(yf.Ticker("AAPL"), 170, 166, 1000, "2023-05-05")
 
 
 

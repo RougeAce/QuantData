@@ -1,5 +1,5 @@
 import yfinance as yf
 
-current = yf.Ticker('AAPL230505C00172500').info
+current = yf.Ticker('GDP').info
 
 print(current)

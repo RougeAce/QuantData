@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 import main
+import test
 import csv
 
 
@@ -84,7 +85,12 @@ def iron_condor(ticker, HStrike, LStrike, Max_Loss, exp):
     # Print closest call and put option contracts
     return  optionHigh, optionLow, closest_call, closest_put
 
-SC, SP, BC, BP = iron_condor(yf.Ticker("AAPL"), 170, 166, 1000, "2023-05-05")
+SC, SP, BC, BP = iron_condor(yf.Ticker("AAPL"), 170, 166, 500, "2023-05-05")
+
+
+
+max_loss, max_gain, net_premiums = test.calculate_options(SC['contractSymbol'] + "S", SP['contractSymbol'] + "S", BC['contractSymbol'] + "B", BP['contractSymbol'] + "B")
+print(f"Max Loss = {max_loss}")
 
 
 

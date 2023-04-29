@@ -34,7 +34,7 @@ def get_ticker(symbol = None):
     ticker = yf.Ticker(symbol.upper())
     return ticker
 
-print(get_ticker("DJIA").info)
+
 
 
 

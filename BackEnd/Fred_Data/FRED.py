@@ -1,48 +1,46 @@
-import requests
 import pandas as pd
 import PASSWORD
+import requests
 
-# Set up API endpoint and parameters
-
-
-
-def update_GDP_Data():
-    url = 'https://api.stlouisfed.org/fred/series/observations'
-    params = {
-        'series_id': 'GDP', # The series ID for US GDP
-        'api_key': PASSWORD.API_KEY, # Replace YOUR_API_KEY with your FRED API key
-        'file_type': 'json',
-        'frequency': 'q' # Set frequency to quarterly
-    }
-
-    # Make the API request
-    response = requests.get(url, params=params)
-
-    # Convert JSON response to a DataFrame
-    data = pd.json_normalize(response.json()['observations'])
-    df = pd.DataFrame(data, columns=['date', 'value'])
-
-    # Save the DataFrame to a CSV file in a specific directory
-    output_path = 'GDP.csv'
-    df.to_csv(output_path, index=False)
-
-def update_Recession_Data():
+def get_fred_data(freq, pull_data='USREC', update=True, R=True):
+    if update == False and R == False:
+        raise TypeError('Both update and request return are false')
     # Set up API endpoint and parameters
     url = 'https://api.stlouisfed.org/fred/series/observations'
     params = {
-        'series_id': 'USREC',  # The series ID for US recession data
-        'api_key': PASSWORD.API_KEY,  # Replace YOUR_API_KEY with your FRED API key
-        'file_type': 'json'
+        'series_id': pull_data,
+        'api_key': PASSWORD.API_KEY,
+        'file_type': 'json',
+        'frequency': freq,
     }
 
-    # Make the API request
-    response = requests.get(url, params=params)
+    try:
+        # Make the API request
+        response = requests.get(url, params=params)
+        response.raise_for_status()
 
-    # Convert the API response to a pandas DataFrame
-    data = response.json()['observations']
-    df = pd.DataFrame.from_records(data, columns=['realtime_start', 'realtime_end', 'date', 'value'])
+        # Convert the API response to a pandas DataFrame
+        data = response.json()['observations']
+        df = pd.DataFrame.from_records(data, columns=['realtime_start', 'realtime_end', 'date', 'value'])
 
-    # Save the DataFrame to a CSV file
-    df.to_csv('Recessions.csv', index=False)
 
-update_Recession_Data()
+
+        if update:
+            # Save the DataFrame to a CSV file
+            df.to_csv(pull_data + '.csv', index=False)
+
+        if R:
+            return df
+
+    except requests.exceptions.HTTPError as e:
+        return f"Request error: {e.response.text}"
+
+def get_gdp(freq = 'q', Update = True, R = True):
+    return get_fred_data(freq, pull_data='GDP', Update = Update, R = R)
+
+def get_reccesion(freq = 'm', Update = True, R = True):
+    return get_fred_data(freq, pull_data="USREC", update = Update, R=R)
+
+
+
+

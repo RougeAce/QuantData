@@ -10,8 +10,14 @@ def current_share_price(Ticker):  # Gets the current share price from the market
     output = Ticker.info['currentPrice']
     return round(output, 4)
 
+def previous_close_price(Ticker):
+    output = Ticker.info['previousClose']
+    return round(output, 4)
 
 
+def ticker_name(Ticker):
+    output = Ticker.info['longName']
+    return output
 
 def get_ticker(symbol = None):
     if symbol == None:
@@ -21,6 +27,7 @@ def get_ticker(symbol = None):
 
     ticker = yf.Ticker(symbol.upper())
     return ticker
+
 
 
 

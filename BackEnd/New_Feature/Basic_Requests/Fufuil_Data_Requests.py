@@ -69,9 +69,20 @@ def stock_deviations(ticker):
         plt.plot(df, label=main.get_ticker(ticker).info['longName'])
         plt.show()
 
+'''stock_net change shows the net change in stock. It is currently on V1 and will be
+upgraded to V2 where the inputs will be unlimited and you can customize the period'''
+def stock_net_change(period = '30d', *ticker):
+    export = input("Would you like to view it as a pyplot? (Y/N)")
+    if export == "Y":
+        for i in ticker:
+            df = indicators.get_net_change(main.get_ticker(ticker), time=period)
+            plt.plot(df, label=main.get_ticker(ticker).info['longName'])
 
-# Example usage
-stock_deviations("AAPL")
+    else:
+        raise TypeError('Speed up function by not running this')
+
+
+
 
 
 

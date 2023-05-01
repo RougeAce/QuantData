@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import yfinance as yf
 from BackEnd import main
+import indicators
 
 ''' This may be implemented curretly in testing
 def compare_stocks(period = '1mo', *stocks):
@@ -57,4 +58,20 @@ def CIP(Ticker, Ticker2):  # Gets the shareprice over a certain period of time.
     else:
         pass
 
-compare_stock_prices('1mo')
+# Import modules or define functions as necessary
+
+def stock_deviations(ticker):
+    df = indicators.get_net_change(main.get_ticker(ticker))
+
+    export = input("Would you like to view it as a pyplot? (Y/N)")
+
+    if export.lower() == "y":
+        plt.plot(df, label=main.get_ticker(ticker).info['longName'])
+        plt.show()
+
+
+# Example usage
+stock_deviations("AAPL")
+
+
+

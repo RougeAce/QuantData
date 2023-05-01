@@ -14,7 +14,6 @@ def previous_close_price(Ticker):
     output = Ticker.info['previousClose']
     return round(output, 4)
 
-
 def ticker_name(Ticker):
     output = Ticker.info['longName']
     return output

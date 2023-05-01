@@ -1,5 +1,5 @@
 import click
-import main
+from BackEnd import main
 import time
 import threading
 

@@ -1,7 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
-import main
+from BackEnd import main
 import test
 import csv
 

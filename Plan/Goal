@@ -1,17 +1,14 @@
-Create a thing that allows me to get updated information on stocks. Allows me to eaisly accese earnings, and the information/ratios I want. 
+Create a thing that allows me to get updated information on stocks.
+Allows me to eaisly accese earnings, and the information/ratios I want for all types of trades
 
-This will be constanly updated and have consistent bug fixes. There are three parts.
+The current goal is for it to show exactly whats requested about the following 5 sections.
 
-1. GUI
+1. Stocks and options
 
-2. The functions and APIs used. 
+2. FOREX
 
-3. The API 
+3. Crypto
 
-The current goal is for it to show
+4. Comodities
 
-The part that reccesions happened.
-
-Earnings report and how they effected stock 
-
-and more to come
+5. Econmic indictators

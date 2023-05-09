@@ -4,9 +4,9 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <p>This is a basic HTML boilerplate {{result}}</p>
+    <h1>{{company_name}} : <span id="stock-price">0</span></h1>
   </body>
 </html>

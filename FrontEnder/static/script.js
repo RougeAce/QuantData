@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
           // update the stock price element with the retrieved data
           stockPriceElement.textContent = data;
-          console.log(data.result);
+          console.log(data);
         })
         .catch(error => console.error(error));
     }

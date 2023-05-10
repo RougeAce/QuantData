@@ -1,0 +1,85 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  background-color: transparent;
+  padding-right: 0;
+}
+
+#optionsList {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+#optionsDiv {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+  border-top: none; /* Remove the top border */
+}
+
+#optionsDiv div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#optionsDiv div:hover {
+  background-color: #f5f5f5;
+}
+
+/* Add a search icon */
+select::-ms-expand {
+  display: none;
+}
+
+select::after {
+  content: "\f002"; /* Unicode for search icon */
+  font-family: FontAwesome;
+  font-size: 14px;
+  color: #aaa;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Hide the drop-down arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  background-color: transparent;
+  padding-right: 15px;
+}
+
+/* Style the search suggestions */
+#optionsDiv {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+#optionsDiv div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#optionsDiv div:hover {
+  background-color: #f5f5f5;
+}

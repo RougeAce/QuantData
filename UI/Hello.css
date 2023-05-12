@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 :root {
   --searchbar-width: 400px;
   --stock-color: #1CC54B;
 }
 
+=======
+>>>>>>> 2079c75 (16: Added a search bar to UI)
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -23,7 +26,11 @@ select {
   border: 1px solid #ccc;
   position: absolute;
   z-index: 1;
+<<<<<<< HEAD
   width: calc(var(--searchbar-width) - 2px);
+=======
+  width: 100%;
+>>>>>>> 2079c75 (16: Added a search bar to UI)
   max-height: 150px;
   overflow-y: scroll;
   border-top: none; /* Remove the top border */
@@ -72,6 +79,7 @@ select {
 /* Style the search suggestions */
 #optionsDiv {
   background-color: #fff;
+<<<<<<< HEAD
   border: none; /* Remove the border */
   position: absolute;
   z-index: 1;
@@ -79,18 +87,30 @@ select {
   max-height: 150px;
   overflow-y: scroll;
   margin-left: 76px;
+=======
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+>>>>>>> 2079c75 (16: Added a search bar to UI)
 }
 
 #optionsDiv div {
   padding: 5px;
   cursor: pointer;
+<<<<<<< HEAD
   border: none;
 
+=======
+>>>>>>> 2079c75 (16: Added a search bar to UI)
 }
 
 #optionsDiv div:hover {
   background-color: #f5f5f5;
 }
+<<<<<<< HEAD
 
 
 #searchInput {
@@ -129,3 +149,5 @@ li {
 			height: 800px;
 			border: 1px solid black;
 		}
+=======
+>>>>>>> 2079c75 (16: Added a search bar to UI)

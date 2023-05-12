@@ -124,8 +124,8 @@ li {
 #graph-container {
 			position: relative;
 			top: 50px; /* adjust the distance from the top of the page */
-			left: 20px; /* adjust the distance from the left of the page */
-			width: 500px;
-			height: 300px;
+			left: 400px; /* adjust the distance from the left of the page */
+			width: 1000px;
+			height: 800px;
 			border: 1px solid black;
 		}

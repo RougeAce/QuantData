@@ -1,0 +1,25 @@
+.1
+
+var options = ["AAPL", "META", "TSLA", "ALPA", "IGA"];: This creates an array variable named options that contains 5 strings.
+
+function showOptions() {: This defines a function named showOptions.
+
+var input = document.getElementById("searchInput").value;: This gets the value of an input element with an ID of "searchInput" and assigns it to a variable named input.
+
+var optionsDiv = document.getElementById("optionsDiv");: This gets the element with an ID of "optionsDiv" and assigns it to a variable named optionsDiv.
+
+optionsDiv.innerHTML = "";: This clears the contents of the optionsDiv element.
+
+for (var i = 0; i < options.length; i++) {: This starts a loop that iterates over the elements in the options array.
+
+var option = options[i];: This assigns the current element of the options array to a variable named option.
+
+if (option.toLowerCase().indexOf(input.toLowerCase()) !== -1) {: This checks if the input string is contained within the option string (case-insensitive).
+
+var optionDiv = document.createElement("div");: This creates a new div element and assigns it to a variable named optionDiv.
+
+optionDiv.innerHTML = option;: This sets the contents of the optionDiv element to the option string.
+
+optionsDiv.appendChild(optionDiv);: This appends the optionDiv element as a child of the optionsDiv element.
+
+In summary, the showOptions function takes the value of an input element, searches an array of strings for any elements that contain the input string, and dynamically generates a list of options in a div element based on the matching elements in the array.

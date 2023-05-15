@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import main
 import matplotlib.pyplot as plt
 
 
@@ -25,7 +26,6 @@ def get_historical_data(ticker, keys, start_date, end_date, interval="1d", expor
     return df
 
 
-
 def current_share_price(Ticker):  # Gets the current share price from the market
     output = Ticker.info['currentPrice']
     return round(output, 4)
@@ -46,16 +46,4 @@ def get_ticker(symbol = None):
 
     ticker = yf.Ticker(symbol.upper())
     return ticker
-
-
-
-
-
-
-
-
-
-
-
-
 

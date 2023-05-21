@@ -1,6 +1,6 @@
 # QuantData
 
-This is an application that uses the internet to pull data about differnet investment stratgies and types. It rellies on many open source projects such as yfianace and APIS
-such as FRED and CoinBase's. Currently its in Pre-Alpha and I plan on having an Alpha version done by May 31. I could use any amount of help, but my goal is to create a tool
-that I can use to quickly anaylise data about anything to do with the economy and finance. The goal is to make this as customizeable as possible, which means people should be 
-able to make their own UIs. As you guys can guys can tell from reaidn this README I am new and will need a lot of help. 
+This is an application that uses libraries and APIs to pull data from differnet websites about the stock market and trading. It is currenly in the eraly stages of develpment. It will contain charts, open-soruce anayslis, and bot createors. The goal is to create an 
+open source stock trading view. 
+
+If you would like to contriubte or test just send an issue request with TEST or CONT, and I will tell you how you can help. 

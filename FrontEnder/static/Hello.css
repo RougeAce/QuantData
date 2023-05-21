@@ -1,0 +1,147 @@
+
+:root {
+  --searchbar-width: 400px;
+  --stock-color: #1CC54B;
+}
+
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  background-color: transparent;
+  padding-right: 0;
+}
+
+#optionsList {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+#optionsDiv {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1;
+
+  width: calc(var(--searchbar-width) - 2px);
+
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+  border-top: none; /* Remove the top border */
+}
+
+#optionsDiv div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#optionsDiv div:hover {
+  background-color: #f5f5f5;
+}
+
+/* Add a search icon */
+select::-ms-expand {
+  display: none;
+}
+
+select::after {
+  content: "\f002"; /* Unicode for search icon */
+  font-family: FontAwesome;
+  font-size: 14px;
+  color: #aaa;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Hide the drop-down arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: none;
+  background-color: transparent;
+  padding-right: 15px;
+}
+
+/* Style the search suggestions */
+#optionsDiv {
+  background-color: #fff;
+  border: none; /* Remove the border */
+  position: absolute;
+  z-index: 1;
+  width: calc(var(--searchbar-width));
+  max-height: 150px;
+  overflow-y: scroll;
+  margin-left: 76px;
+  border: 1px solid #ccc;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+#optionsDiv div {
+  padding: 5px;
+  cursor: pointer;
+<<<<<<< HEAD
+  border: none;
+
+
+
+}
+
+#optionsDiv div:hover {
+  background-color: #f5f5f5;
+}
+
+
+
+#searchInput {
+  height: 40px;
+  width: var(--searchbar-width);
+  margin-left: 76px;
+  margin-right: 80px;
+}
+
+body {
+  background-color: #0A0A0A;
+
+}
+hr {color: #FFFFFF}
+
+#ticker {color: #1CC54B;
+        font-family: Inter;
+        margin-left: 76px;
+        font-size: 50px;
+        font-weight: 400;}
+
+#top-header {display: inline-flex;}
+
+li {
+  display: inline-block;
+  margin-right: 60px; /* adds some spacing between the items */
+  color: var(--stock-color);
+  margin-bottom: 0px;
+}
+
+#graph-container {
+			position: relative;
+			top: 50px; /* adjust the distance from the top of the page */
+			left: 400px; /* adjust the distance from the left of the page */
+			width: 1000px;
+			height: 800px;
+			border: 1px solid black;
+		}
+

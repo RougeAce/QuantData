@@ -95,7 +95,7 @@ select {
 #optionsDiv div {
   padding: 5px;
   cursor: pointer;
-<<<<<<< HEAD
+
   border: none;
 
 
@@ -108,7 +108,7 @@ select {
 
 
 
-#searchInput {
+#search-query {
   height: 40px;
   width: var(--searchbar-width);
   margin-left: 76px;

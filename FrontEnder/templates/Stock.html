@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stock| {{Current_Stock}}</title>
+    <title>Stock | {{Corp_name}}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Hello.css') }}">
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='Hello.js') }}"></script>
-
-
 </head>
 <body>
     <div id="top-header">
-        <input type="text" id="searchInput" placeholder="Search...">
+        <form action="/search" method="get" id="search-form">
+    <input type="text" name="search_query" id="search-query">
+
+</form>
+
+<script>
+    document.getElementById('search-query').addEventListener('keydown', function(event) {
+        if (event.keyCode === 13) { // Check if Enter key is pressed (keyCode 13)
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('search-form').submit(); // Submit the form
+        }
+    });
+</script>
+
         <div id="left-header">
             <ul>
                 <li>Home</li>
@@ -25,13 +34,50 @@
             </ul>
         </div>
     </div>
-
     <hr>
-    <h1 id="ticker">Apple Inc: 179.80</h1>
-    <div id="graph-container">
-                <canvas id="myChart"></canvas>
-    <div id="tooltip"></div>
-    </div>
+    <h1 id="ticker">{{Corp_name}}: {{stock_price}}</h1>
+
+    <input type="hidden" id="ticker-symbol" value="{{ ticker }}">
+
+
+<script>
+    // Function to fetch stock price and update the displayed value
+    function updateStockPrice() {
+    const ticker = document.getElementById('ticker-symbol').value;
+
+    fetch('/stock_price/' + ticker)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const stockPriceElement = document.getElementById('stock-price');
+                const stockPrice = data.stock_price;
+
+                // Compare stock price with yesterday's closing price and set the color
+                // Modify the logic below as per your requirements
+                const yesterdayClosingPrice = 100; // Example value, replace with actual value
+                if (stockPrice > yesterdayClosingPrice) {
+                    stockPriceElement.style.color = 'green';
+                } else if (stockPrice < yesterdayClosingPrice) {
+                    stockPriceElement.style.color = 'red';
+                }
+
+                stockPriceElement.textContent = stockPrice;
+            } else {
+                console.error('Error:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Call the function to update the stock price immediately
+updateStockPrice();
+
+// Set up the interval to call the function every 100 seconds
+setInterval(updateStockPrice, 1000);
+</script>
+
 
 
 </body>

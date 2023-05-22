@@ -35,47 +35,34 @@
         </div>
     </div>
     <hr>
-    <h1 id="ticker">{{Corp_name}}: {{stock_price}}</h1>
-
+    <h1 id="ticker">{{Corp_name}}: <span id="stock-price"></span></h1>
     <input type="hidden" id="ticker-symbol" value="{{ ticker }}">
 
 
 <script>
-    // Function to fetch stock price and update the displayed value
-    function updateStockPrice() {
-    const ticker = document.getElementById('ticker-symbol').value;
+    function fetchStockPrice() {
+  // Get the ticker symbol from the hidden input field
+  const tickerSymbol = document.getElementById('ticker-symbol').value;
 
-    fetch('/stock_price/' + ticker)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const stockPriceElement = document.getElementById('stock-price');
-                const stockPrice = data.stock_price;
-
-                // Compare stock price with yesterday's closing price and set the color
-                // Modify the logic below as per your requirements
-                const yesterdayClosingPrice = 100; // Example value, replace with actual value
-                if (stockPrice > yesterdayClosingPrice) {
-                    stockPriceElement.style.color = 'green';
-                } else if (stockPrice < yesterdayClosingPrice) {
-                    stockPriceElement.style.color = 'red';
-                }
-
-                stockPriceElement.textContent = stockPrice;
-            } else {
-                console.error('Error:', data.error);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+  // Fetch the stock price data from the server
+  fetch(`/stock_price/${tickerSymbol}`)
+    .then(response => response.json())
+    .then(data => {
+      // Update the stock price element with the retrieved data
+      const stockPriceElement = document.getElementById('stock-price');
+      stockPriceElement.textContent = data.stock_price;
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
 }
 
-// Call the function to update the stock price immediately
-updateStockPrice();
+// Fetch the stock price initially
+fetchStockPrice();
 
-// Set up the interval to call the function every 100 seconds
-setInterval(updateStockPrice, 1000);
+// Update the stock price every second
+setInterval(fetchStockPrice, 1000);
+
 </script>
 
 

@@ -23,16 +23,42 @@
     });
 </script>
 
-        <div id="left-header">
-            <ul>
-                <li>Home</li>
-                <li>Market Data</li>
-                <li>Portfolio</li>
-                <li>Terminal</li>
-                <li>Compare</li>
-                <li>Login/SignUp</li>
-            </ul>
-        </div>
+        <div id="container">
+    <div id="left-header">
+        <ul>
+            <li><a href="#" onclick="navigate('home')">Home</a></li>
+            <li><a href="#" onclick="navigate('market')">Market Data</a></li>
+            <li><a href="#" onclick="navigate('portfolio')">Portfolio</a></li>
+            <li><a href="#" onclick="navigate('terminal')">Terminal</a></li>
+            <li><a href="#" onclick="navigate('compare')">Compare</a></li>
+            <li><a href="#" onclick="navigate('login')">Login/SignUp</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function navigate(page) {
+        // Send POST request to Flask and handle the response
+        fetch('/navigate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ page: page }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from Flask
+            // Update the content on the page based on the response
+            console.log(data);
+            // Example: Update a specific element with the response data
+            document.getElementById('content').innerHTML = data.content;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
     </div>
     <hr>
     <h1 id="ticker">{{Corp_name}}: <span id="stock-price"></span></h1>

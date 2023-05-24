@@ -145,3 +145,23 @@ li {
 			border: 1px solid black;
 		}
 
+#left-header ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#left-header ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#left-header ul li a {
+    text-decoration: none;
+    color: inherit; /* Use the default text color */
+    padding: 5px;
+    cursor: default; /* Set the cursor style to default */
+}
+
+#left-header ul li a:hover {
+    /* Add any desired hover styles if needed */
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SignIn/SignUp</title>
-    <link rel="stylesheet" type="text/css" href="authentication.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='authentication.css') }}">
 </head>
 <body>
 
@@ -11,8 +11,8 @@
     <h1 id="ticker">Sign-In/Sign-Up</h1>
     <hr>
     <div class="button-container">
-        <button class="button" onclick="window.location.href='signin.html'">Sign In</button>
-        <button class="button" onclick="window.location.href='signup.html'">Sign Up</button>
+        <button class="button" onclick="window.location.href='/SIGNIN'">Sign In</button>
+        <button class="button" onclick="window.location.href='/SIGNUP'">Sign Up</button>
     </div>
 </body>
 

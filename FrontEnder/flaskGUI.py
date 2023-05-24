@@ -40,6 +40,27 @@ def search_stock_name(query):
     return jsonify(stock_name=stock_name)
 
 
+#  Authentication Section
+@app.route('/NAV/LOG')
+def log():
+    return render_template('authentication.html')
+
+# Sign In section
+@app.route('/SIGNIN')
+def sign():
+    return render_template('SN.html')
+
+# Sign Up section
+
+@app.route('/SIGNUP')
+def SU():
+    return render_template('SU.html')
+
+
+
+
+
+
 
 
 if __name__ == '__main__':

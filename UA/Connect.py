@@ -30,8 +30,8 @@ def add_user_a(ID, mail, username, password):
 def add_user_a(ID, mail, username, password):
     cnx = connect()
     cursor = cnx.cursor()
-    query = "INSERT INTO USERS (ID, mail, username, password, created_at) VALUES (%s, %s, %s, %s, %s)"
-    values = (ID, mail, username, password, datetime.datetime.now())
+    query = "INSERT INTO USERS (ID, mail, username, password) VALUES (%s, %s, %s, %s)"
+    values = (ID, mail, username, password)
 
     cursor.execute(query, values)
     

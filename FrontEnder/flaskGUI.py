@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, redirect, request, url_for
 import main
+from UA import start
 
 
 app = Flask(__name__)
@@ -62,13 +63,36 @@ def request_signup():
     data = request.get_json()
     email = data['email']
     username = data['username']
-    password = data['password']
+
 
     # Process the data as needed
 
-    return f'we received email as {email}' \
-           f'passowrd as {password}' \
-           f'username as {username}'
+    global UIC
+
+    UIC = start.sign_up(username, email)
+
+
+    return "Code was recieved succesfully"
+
+@app.route('/requestsignup/requestauthentcation', methods=['POST'])
+def request_code():
+    data = request.get_json()
+    email = str(data['email'])
+    username = str(data['username'])
+    password = str(data['password'])
+    code = data['Code']
+
+
+    start.check_code(UIC, code, password, email, username)
+
+    return "Code authentication request received successfully", 200
+
+
+
+
+
+
+
 
 
 

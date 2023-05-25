@@ -1,8 +1,10 @@
-import Connect
-import EE
-import UAM
+from UA import Connect
+from UA import EE
+from UA import UAM
 import hashlib
-import random 
+import random
+
+global UIC
 
 
 
@@ -53,41 +55,25 @@ def create_new_id():
         return fid
     else:
         return create_new_id()
-        
+
+
+
+def check_code(UIC, CODE, password, email, username):
+    if UIC == CODE:
+        password = hashlib.sha256(password.encode()).hexdigest()
+        email, key = EE.encrypt_email(email)
+        id = create_new_id()
+        Connect.add_user_a(id, email, username, password)
+        Connect.add_user_k(id, key)
 
     
-def sign_up():
-    username = input("What username would you like to use")
+def sign_up(username, email):
     result = Connect.find_usernameWP(username)
-    password = input("What password would you like to use")
-    email = input("What is your email")
     
     if result is None:
-    
-        code = create_code()
-        
-        UAM.send_email("treydavidson2005@gmail.com", email, code)
-        
-        ucode = input("What code did you recieive in the email")
-        
-        if ucode == code:
-            password = hashlib.sha256(password.encode()).hexdigest()
-            email, key = EE.encrypt_email(email)
-            id = create_new_id()
-            Connect.add_user_a(id, email, username, password)
-            Connect.add_user_k(id, key)
-            
-            
-            
-            
-            
 
-# Get the input
-start = input("Would you like to sign in or sign up (SN/SU)")
-start = start.upper()
+        UIC = create_code()
+        
+        UAM.send_email("treydavidson2005@gmail.com", email, UIC)
 
-# Check what it is
-if start == "SI":
-    sign_in()
-if start == "SU":
-    sign_up()
+        return UIC

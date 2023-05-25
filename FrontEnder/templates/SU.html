@@ -54,7 +54,49 @@ function submitForm() {
 <button class="button" onclick="submitForm()">Send Code</button>
 
         <input class="text_bar" type="password" id="authentication" placeholder="CODE">
-        <button class="button" onclick="window.location.href='signup.html'">Sign Up</button>
+        <button class="button" onclick="summitCode()">Sign Up</button>
+
+        <script>
+            function summitCode() {
+                var code = document.getElementById('authentication').value;
+                var email = document.getElementById('email');
+                var username = document.getElementById('username');
+                var password = document.getElementById('password');
+
+                var data = {
+        email: email,
+        username: username,
+        password: password,
+        Code: code
+    };
+                fetch('/requestsignup/requestauthentcation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Handle the response
+        if (response.ok) {
+            // Request was successful
+            alert("Request sent successfully!");
+            // You can perform any additional actions here
+        } else {
+            // Request failed
+            alert("Request failed!");
+            // You can handle the error or display an error message
+        }
+    })
+    .catch(error => {
+        // Handle any error that occurred during the fetch request
+        console.error('Error:', error);
+    });
+
+
+
+            }
+        </script>
 
     </div>
 </body>

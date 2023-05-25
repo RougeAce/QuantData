@@ -57,6 +57,21 @@ def SU():
     return render_template('SU.html')
 
 
+@app.route('/requestsignup', methods=['POST'])
+def request_signup():
+    data = request.get_json()
+    email = data['email']
+    username = data['username']
+    password = data['password']
+
+    # Process the data as needed
+
+    return f'we received email as {email}' \
+           f'passowrd as {password}' \
+           f'username as {username}'
+
+
+
 
 
 

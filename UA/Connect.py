@@ -1,5 +1,6 @@
 import mysql.connector
 import datetime
+import EE
 
 # Establish a connection to the MySQL server as root
 def connect(database="QA", host="localhost", user="root", password=""):
@@ -107,6 +108,24 @@ def find_user_id(username, password):
     # Username or password is incorrect
     close(cnx)
     return None
+
+
+def get_all_emails(email):
+    cnx = connect()
+    cursor = cnx.cursor()
+    query = "SELECT mail FROM USERS"
+
+    cursor.execute(query)
+    results = cursor.fetchall()
+
+    emails = [result[0] for result in results]  # Extract emails from the results and store in an array
+
+    for i in emails:
+        if (email == EE.decrypt_email(i)):
+            return True
+
+
+    return False
 
 
 def close(cnx):

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='authentication.css') }}">
-    <title>Sign Up | EMAIL</title>
+    <title>Sign UP | USERNAME</title>
 </head>
 <body>
     <h1 id="ticker">Sign-Up</h1>
     <hr>
     <div class="button-container">
-        <input class="text_bar" type="email" id="email" placeholder="Email">
+        <input class="text_bar" type="text" id="username" placeholder="Kitchen-Listens">
 
         <button class="button" onclick="submitForm()">Next</button>
 
@@ -20,45 +20,7 @@
                     email: email
                 };
 
-                fetch('/SIGNUP/EMAIL', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
-                    // Handle the response
-                    if (response.ok) {
-                        // Request was successful
-                        alert("Request sent successfully!");
-                        // You can perform any additional actions here
-                    } else {
-                        // Request failed
-                        alert("Request failed!");
-                        // You can handle the error or display an error message
-                    }
-                })
-                .catch(error => {
-                    // Handle any error that occurred during the fetch request
-                    console.error('Error:', error);
-                });
-            }
-
-        </script>
-
-            <input class="text_bar" type="password" id="CODE" placeholder="Email">
-
-        <button class="button" onclick="submitForm()">Next</button>
-
-        <script>
-            function submitForm() {
-                var email = document.getElementById('email').value;
-                var data = {
-                    email: email
-                };
-
-                fetch('/SIGNUP/EMAIL', {
+                fetch('/SIGNUP/USERNAME', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

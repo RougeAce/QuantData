@@ -58,6 +58,11 @@ def create_new_id():
 
 
 
+
+
+
+
+
 def check_code(UIC, CODE, password, email, username):
     if UIC == CODE:
         password = hashlib.sha256(password.encode()).hexdigest()

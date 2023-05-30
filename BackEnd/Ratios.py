@@ -1,3 +1,5 @@
 import yfinance as yf
 
-print(yf.Ticker("AAPL").info)
+
+def data_available(ticker):
+  print(yf.Ticker(ticker).info)

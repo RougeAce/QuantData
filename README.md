@@ -4,3 +4,21 @@ This is an application that uses libraries and APIs to pull data from differnet 
 open source stock trading view. 
 
 Currently speaking we are working towards a V1.0. The goal date for realse has been delayed to June 10 from June 1. V 1.0 will come with a full tutorial + insturction 
+
+V1.0 Goals are the following 
+
+Paper Trading with Stock June 3
+
+Basic Dash Board June 5 
+
+Home Page June 8 
+
+Paper Trading with Options June 10
+
+Tutorial June 10 
+
+V 2.0
+
+API's June 15 
+
+Articles about stock June 17 

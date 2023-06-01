@@ -9,7 +9,11 @@ V1.0 Goals are the following
 
 Paper Trading with Stock June 3
 
+Sign In/Sign Out options June 4
+
 Basic Dash Board June 5 
+
+Terminal Interface June 6 
 
 Home Page June 8 
 

@@ -30,7 +30,7 @@
             <li><a href="NAV/MARKET" onclick="navigate('market')">Market Data</a></li>
             <li><a href="NAV/PORT" onclick="navigate('portfolio')">Portfolio</a></li>
             <li><a href="NAV/TERM" onclick="navigate('terminal')">Terminal</a></li>
-            <li><a href="/NAV/FINANCIAL" onclick="navigate('financial')">Financial</a></li>
+            <li><a href="NAV/FINANCIAL" onclick="navigate('compare')">Financial</a></li>
             <li><a href="NAV/LOG" onclick="navigate('login')">Login/SignUp</a></li>
         </ul>
     </div>
@@ -61,37 +61,24 @@
 </script>
     </div>
     <hr>
-    <h1 id="ticker">{{Corp_name}}: <span id="stock-price"></span></h1>
+    <h1 id="ticker">Financials of {{Corp_name}} <span id="stock-price"></span></h1>
     <input type="hidden" id="ticker-symbol" value="{{ ticker }}">
 
+    <div class="total_reavnue"><h2>Total Reavnue {{TR}} </h2></div>
 
-<script>
-    function fetchStockPrice() {
-  // Get the ticker symbol from the hidden input field
-  const tickerSymbol = document.getElementById('ticker-symbol').value;
+    <div class="cost_of_reavnue"><h2>Cost of Reavnue {{Cost of Reavnue}} </h2></div>
 
-  // Fetch the stock price data from the server
-  fetch(`/stock_price/${tickerSymbol}`)
-    .then(response => response.json())
-    .then(data => {
-      // Update the stock price element with the retrieved data
-      const stockPriceElement = document.getElementById('stock-price');
-      stockPriceElement.textContent = data.stock_price;
-    })
-    .catch(error => {
-      console.log('Error:', error);
-    });
-}
+    <div class="Gross_Reavanue"><h2>Gross Reavnue {{Cost of Reavnue}} </h2></div>
 
-// Fetch the stock price initially
-fetchStockPrice();
+     <div class="RD_Expense"><h2>R&D Expense {{Cost of Reavnue}} </h2></div>
 
-// Update the stock price every second
-setInterval(fetchStockPrice, 1000);
+     <div class="Gross_Reavanue"><h2>Gross Reavnue {{Cost of Reavnue}} </h2></div>
 
-</script>
+    <div class="Sales/Admistator"><h2>Sales Admistator {{Cost of Reavnue}} </h2></div>
 
+    <div class="Operating_Income"><h2>Operating Income {{Cost of Reavnue}} </h2></div>
 
+    <div class="Net_Income"><h2>Net Income {{Cost of Reavnue}} </h2></div>
 
 </body>
 </html>

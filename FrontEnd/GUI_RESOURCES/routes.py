@@ -4,6 +4,9 @@ from BackEnd import main
 def index_route():
     return render_template('Stock.html')
 
+def financial_route():
+    return render_template('Financial.html')
+
 def search():
     query = request.args.get('search_query')
     print(f"Received query: {query}")

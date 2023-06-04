@@ -5,6 +5,7 @@ API = str(PASSWORD.Alpha_API)
 symbol = "AAPL"
 year = "2020"
 
+
 def get_data(symbol):
     url = f"https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol={symbol}&apikey={API}"
     response = requests.get(url)

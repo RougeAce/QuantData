@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var ctx = document.getElementById("myChart").getContext("2d");
   var myChart = new Chart(ctx, {
     type: "line",
@@ -16,7 +15,7 @@ var ctx = document.getElementById("myChart").getContext("2d");
     },
     options: {},
   });
-=======
+
 var options = ["AAPL", "META", "TSLA", "ALPA", "IGA"];
 
 function showOptions() {
@@ -33,4 +32,3 @@ function showOptions() {
     }
   }
 }
->>>>>>> 2079c75 (16: Added a search bar to UI)

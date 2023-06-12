@@ -1,9 +1,14 @@
 from flask import Flask
+from flask import render_template
 from GUI_RESOURCES.routes import index_route, search, search_stock, search_stock_price, search_stock_name
 from GUI_RESOURCES.authentication import log, sign
 from GUI_RESOURCES.signup import SU, request_signup_email, request_signup_username, request_code
 
 app = Flask(__name__)
+
+@app.route('/NAV/FINANCIAL')
+def financial_route():
+    return render_template('Financial.html')
 
 # Register routes
 app.route('/')(index_route)
